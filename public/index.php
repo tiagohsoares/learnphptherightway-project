@@ -8,29 +8,26 @@ use App\Controllers\HomeController;
 use App\Router;
 use App\View;
 
-session_start();
+$root = dirname(__DIR__);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
-define('STORAGE_PATH', __DIR__ . '/../storage');
-define('VIEW_PATH', __DIR__ . '/../views');
-
-include_once VIEW_PATH . '/Index.php';
+define('STORAGE_PATH', $root . DIRECTORY_SEPARATOR . 'storage');
+define('VIEW_PATH', $root . DIRECTORY_SEPARATOR . 'views');
 
 $router = new router();
 
 $router
-    ->get('/', [HomeController::class, 'index'])
-    ->post('transactions/upload', [HomeController::class, 'upload']);
+    ->get('/transactions', [HomeController::class, 'index'])
+    ->post('/upload', [HomeController::class, 'upload']);
 
 (new App(
     $router,
     ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']],
     new Config($_ENV)
 ))->run();
-$test = new HomeController;
 
-$test->store();
+echo STORAGE_PATH;

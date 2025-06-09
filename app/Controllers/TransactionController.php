@@ -11,11 +11,11 @@ class TransactionController
 {
 public $file = [];
 
-function lerArquivos(string $x, string $dirpath): array{
-    foreach(scandir($dirpath) as $files){
+public function lerArquivos(string $x): array{
+    foreach(scandir(STORAGE_PATH) as $files){
         $file[] = $files; 
     } $arquivo = array_search($x, $file);
-     $files = [($dirpath . $file[$arquivo])];
+     $files = [(STORAGE_PATH . $file[$arquivo])];
      return $files;
 }
 
@@ -57,11 +57,5 @@ function seperadorDollar(array $coluna) : array{
 function formatarData(string $date): string{
     return date('M j,Y',strtotime($date));
 }
-
-    
-    public function upload(): View 
-    {
-        return View::make('upload');
-    }
 
 }

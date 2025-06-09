@@ -7,8 +7,8 @@
         <title>Document</title>
     </head>
     <body>
-    <form action= "/transactions/upload" method="post" enctype="multipart/form-data" id="receipt">
-        <input type="file" name="transações[]" multiple>
+    <form action= "/upload" method="post" enctype="multipart/form-data" id="receipt">
+        <input type="file" name="receipt[]" multiple>
         <button type="submit" name="receipt">Upload</button>
     </body>
 </html>
