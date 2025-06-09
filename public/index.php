@@ -18,12 +18,13 @@ $dotenv->load();
 define('STORAGE_PATH', __DIR__ . '/../storage');
 define('VIEW_PATH', __DIR__ . '/../views');
 
-//include_once VIEW_PATH . '/Index.php';
+include_once VIEW_PATH . '/Index.php';
 
 $router = new router();
 
 $router
-    ->get('/', [HomeController::class, 'index']);
+    ->get('/', [HomeController::class, 'index'])
+    ->post('transactions/upload', [HomeController::class, 'upload']);
 
 (new App(
     $router,
