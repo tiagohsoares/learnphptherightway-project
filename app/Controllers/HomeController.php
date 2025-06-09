@@ -17,4 +17,11 @@ class HomeController
     {
         return View::make('upload');
     }
+
+    public function store()
+    {
+        $amount = $_POST['receipt'];
+
+        var_dump($amount);
+    }
 }

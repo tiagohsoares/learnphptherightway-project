@@ -59,7 +59,7 @@ function formatarData(string $date): string{
 }
 
     
-public function upload(): View 
+    public function upload(): View 
     {
         return View::make('upload');
     }

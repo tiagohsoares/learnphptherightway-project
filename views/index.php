@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt_br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -7,8 +7,8 @@
         <title>Document</title>
     </head>
     <body>
-    <form action="/transactions/upload" method="post" enctype="multipart/form-data" id="receipt">
-        <input type="file" name="receipt[]" multiple>
+    <form action= "/transactions/upload" method="post" enctype="multipart/form-data" id="receipt">
+        <input type="file" name="transações[]" multiple>
         <button type="submit" name="receipt">Upload</button>
     </body>
 </html>
