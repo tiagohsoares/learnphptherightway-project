@@ -14,13 +14,13 @@ services:
     container_name: programwithgio-nginx
     restart: always
     ports:
-      - 8000:81
+      - 8080:81
     volumes:
       - ../:/var/www
       - ./nginx:/etc/nginx/conf.d
   db:
-    container_name: programwithgio-db
-    image: mysql:latest
+    container_name: programwithgio
+    image: mysql:9.3
     volumes:
       - ./storage/mysql:/var/lib/mysql
     restart: always
@@ -28,3 +28,4 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - 3307:3306
+      

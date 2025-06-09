@@ -8,7 +8,7 @@ use App\View;
 
 class HomeController
 {
-    public function index(): View
+    public static function index(): View
     {
         return View::make('index');
     }

@@ -4,11 +4,8 @@ declare(strict_types = 1);
 
 use App\App;
 use App\Config;
-use App\Controllers\HomeController;
+use App\Controllers\TransactionController;
 use App\Router;
-use App\View;
-
-session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -18,12 +15,13 @@ $dotenv->load();
 define('STORAGE_PATH', __DIR__ . '/../storage');
 define('VIEW_PATH', __DIR__ . '/../views');
 
-//include_once VIEW_PATH . '/Index.php';
+include_once VIEW_PATH . '/transactions.php';
 
-$router = new router();
+$router = new Router();
 
 $router
-    ->get('/', [HomeController::class, 'index']);
+    ->get('/transactions/upload', [TransactionController::class, 'transactions'])
+    ->post('/transactions/upload', [TransactionController::class, 'upload']);
 
 (new App(
     $router,
