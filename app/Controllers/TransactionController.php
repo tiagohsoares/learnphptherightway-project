@@ -4,12 +4,17 @@ declare(strict_types = 1);
 
 namespace App\Controllers;
 
-use App\View;
-
 class TransactionController
 
+
 {
-public $file = [];
+
+public array $transações;
+public array $total; 
+
+public function getTransaction (){
+    $_FILES['receipt'] = $file;
+}
 
 public function lerArquivos(string $x): array{
     foreach(scandir(STORAGE_PATH) as $files){
@@ -31,31 +36,6 @@ function abrirArquivo(string $filename): array {
         $transações[] = $transação; 
     }
     return $transações;
-}
-
-function extrairColuna(int $id, array $array): array{
-    // Coluna a ser extraida pelo array 
-    // Cada key corresponde a uma coluna especifica 0 =data
-    // Array com a coluna
-    $coluna = [];
-    if(!empty($array)){
-        foreach($array as $transação){
-            $coluna[] = $transação[$id];
-        }
-    }
-    return $coluna;
-}
-
-function seperadorDollar(array $coluna) : array{
-    $string = str_replace('$', '', $coluna);
-    foreach($string as $valor){
-        $valores[] = floatval($valor);
-    }
-    return $valores;
-}
-
-function formatarData(string $date): string{
-    return date('M j,Y',strtotime($date));
 }
 
 }

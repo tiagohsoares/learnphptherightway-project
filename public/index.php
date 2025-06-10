@@ -21,8 +21,8 @@ define('VIEW_PATH', $root . DIRECTORY_SEPARATOR . 'views');
 $router = new router();
 
 $router
-    ->get('/transactions', [HomeController::class, 'index'])
-    ->post('/upload', [HomeController::class, 'upload']);
+    ->get( '/learnphptherightway-project/public/', [HomeController::class, 'index'])
+    ->post('/learnphptherightway-project/public/upload/', [HomeController::class, 'upload']);
 
 (new App(
     $router,
@@ -30,4 +30,6 @@ $router
     new Config($_ENV)
 ))->run();
 
-echo STORAGE_PATH;
+echo '<pre>';
+var_dump($_FILES);
+echo '<pre>';
