@@ -7,7 +7,7 @@
         <title>Document</title>
     </head>
     <body>
-    <form action= "/learnphptherightway-project/public/transactions/upload/" method="post" enctype="multipart/form-data" id="receipt">
+    <form action= "/upload" method="post" enctype="multipart/form-data" id="receipt">
         <input type="file" name="receipt[]" multiple>
         <button type="submit" name="receipt">Upload</button>
     </body>

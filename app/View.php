@@ -12,6 +12,7 @@ class View
         protected string $view,
         protected array $params = []
     ) {
+        
     }
 
     public static function make(string $view, array $params = []): static

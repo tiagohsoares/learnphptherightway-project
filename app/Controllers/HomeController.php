@@ -9,18 +9,22 @@ use App\Controllers\TransactionController;
 
 class HomeController
 {
-    public $invoices;
+    public array $transactions;
 
-    public static function index(): View
+    public function index(): View
     {
         session_start();
         return View::make('index');
     }
 
- public static function upload(): View
+    public function upload(): View
     {
+        session_start();
         $invoices = new TransactionController;
-        return View::make('transactions');
+        $this->transactions = $invoices->getTransaction();
+        return View::make('transactions', [
+            'transactions' => $this->transactions,
+        ]);
     }
 
 }
