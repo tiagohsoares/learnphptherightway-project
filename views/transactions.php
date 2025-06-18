@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>transações</title>
+        <title>TRANSAÇÕES</title>
         <style>
             table {
                 width: 100%;
@@ -37,7 +37,7 @@
                 <?php if (!empty($transactions)):?>
                     <?php foreach($transactions as $key => $transação):?>
                         <tr>
-                            <td><?= $transação[0]?></td>
+                            <td><?= App\Helpers\Helper::formatarData($transação[0])?></td>
                             <td><?= $transação[1]?></td>
                             <td><?= $transação[2]?></td>
                             <td><?= $transação[3]?></td>
@@ -48,8 +48,12 @@
             <tfoot>
                 <tr>
                     <th colspan="3">Total Income:</th>
-                    <td</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
+                    <?php //endif?>
                 <tr>
                     <th colspan="3">Total Expense:</th>
                     <td></td>

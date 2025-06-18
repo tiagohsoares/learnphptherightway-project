@@ -5,15 +5,15 @@ declare(strict_types = 1);
 namespace App\Controllers;
 
 use App\View;
-use App\Helpers;
-use App\Helpers\Helpers as HelpersHelpers;
+use App\Helpers\Helper;
 
 class TransactionController
 
 {
-private array $transactions;
+public array $transactions;
+public array $totals;
 
-public function getTransaction(){
+public function getTransaction(): array{
     $file =  $_FILES['receipt']['tmp_name'];
     $filePath = STORAGE_PATH . DIRECTORY_SEPARATOR . $_FILES['receipt']['name'][0];
     move_uploaded_file($file[0], $filePath);
@@ -27,10 +27,12 @@ function abrirArquivo(string $filename): array {
     fgetcsv($file, separator: ',', enclosure: '"', escape: "");
     
     while(($transação = fgetcsv($file, separator: ',', enclosure: '"', escape: "")) !== false) {
-        $transações[] = $transação; 
-        $transação = $this->extrairTransacao($transação);
+      //  $transações[0] = Helper::formatarData($transação[0]);
+        $transações[] = $transação;
+        $this->totals[] = $this->extrairTransacao($transação);
     }
     return $transações;
+
 }
 
 public function extrairTransacao(array $array): array{
@@ -39,12 +41,18 @@ public function extrairTransacao(array $array): array{
     // Array com a coluna
     [$data, $check, $descricao, $valor] = $array;
 
-    $valor = str_replace(['$', ','], '', $valor);
+  //  if(!empty($this->transactions)){
+  //      foreach($this->transactions as $transação){
+   //         $transaction 
+   //     }
+   // }
+    //String para float
+    $valor = (float) str_replace(['$', ','], '', $valor);
 
     return [
         'transacaoData' => $data,
         'checkId' => $check,
-        '$descricao' => $descricao,
+        'descricao' => $descricao,
         'valor' => $valor
     ];
 }

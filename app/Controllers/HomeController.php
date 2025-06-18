@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\View;
 use App\Controllers\TransactionController;
+use App\Helpers\Helper;
 
 class HomeController
 {
@@ -22,8 +23,9 @@ class HomeController
         session_start();
         $invoices = new TransactionController;
         $this->transactions = $invoices->getTransaction();
-        return View::make('transactions', [
-            'transactions' => $this->transactions,
+        var_dump($invoices);
+        return View::make('transactions',[
+            'transactions' => Helper::extrairColuna('$invoices->totals),
         ]);
     }
 
